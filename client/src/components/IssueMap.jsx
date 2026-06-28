@@ -11,7 +11,7 @@ function IssueMap() {
 
   const fetchIssues = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/issues");
+      const res = await axios.get("https://civichero-ai-backend.onrender.com/api/issues");
       setIssues(res.data);
     } catch (error) {
       console.log(error);

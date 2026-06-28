@@ -52,7 +52,7 @@ function ReportIssue() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/ai/categorize",
+        "https://civichero-ai-backend.onrender.com/api/ai/categorize",
         {
           description: formData.description,
         }
@@ -92,7 +92,7 @@ function ReportIssue() {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/issues",
+        "https://civichero-ai-backend.onrender.com/api/issues",
         data,
         {
           headers: {
@@ -151,7 +151,7 @@ function ReportIssue() {
         <button type="button" onClick={handleAICategorize}>
          
           Auto Detect with AI 🤖
-           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700"
+ 
         </button>
 
         <br /><br />
@@ -191,7 +191,7 @@ function ReportIssue() {
         <button type="button" onClick={getCurrentLocation}>
          
           Use Current Location 📍
-          className="bg-purple-600 text-white px-4 py-2 rounded-xl"
+          
         </button>
 
         <br /><br />
@@ -237,7 +237,7 @@ function ReportIssue() {
         {/* Submit */}
         <button type="submit">
           Submit Issue
-          className="bg-red-600 text-white px-4 py-2 rounded-xl"
+        
         </button>
       </form>
     </div>

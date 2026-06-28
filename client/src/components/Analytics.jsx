@@ -11,7 +11,7 @@ function Analytics() {
   const fetchIssues = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/issues"
+        "https://civichero-ai-backend.onrender.com/api/issues"
       );
 
       setIssues(res.data);

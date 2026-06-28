@@ -10,7 +10,7 @@ function AdminDashboard() {
 
   const fetchIssues = async () => {
     const res = await axios.get(
-      "http://localhost:5000/api/issues"
+      "https://civichero-ai-backend.onrender.com/api/issues"
     );
 
     setIssues(res.data);
@@ -19,7 +19,7 @@ function AdminDashboard() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/issues/${id}/status`,
+        `https://civichero-ai-backend.onrender.com/api/issues/${id}/status`,
         {
           status,
         }

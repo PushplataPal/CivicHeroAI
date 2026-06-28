@@ -17,7 +17,7 @@ function Dashboard() {
   const fetchStats = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/issues"
+        "https://civichero-ai-backend.onrender.com/api/issues"
       );
 
       const issues = res.data;

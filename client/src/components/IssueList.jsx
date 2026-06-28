@@ -11,7 +11,7 @@ function IssueList() {
   const fetchIssues = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/issues"
+        "https://civichero-ai-backend.onrender.com/api/issues"
       );
 
       setIssues(res.data);
@@ -23,7 +23,7 @@ function IssueList() {
  const handleUpvote = async (id) => {
   try {
     await axios.put(
-      `http://localhost:5000/api/issues/${id}/upvote`
+      `https://civichero-ai-backend.onrender.com/api/issues/${id}/upvote`
     );
 
     let currentPoints =
@@ -107,7 +107,7 @@ transition
 
           {issue.image && (
             <img
-              src={`http://localhost:5000/uploads/${issue.image}`}
+              src={`https://civichero-ai-backend.onrender.com/uploads/${issue.image}`}
               alt={issue.title}
               width="250"
               style={{

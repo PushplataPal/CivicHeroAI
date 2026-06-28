@@ -11,11 +11,11 @@ function PredictiveInsights() {
   const fetchPrediction = async () => {
     try {
       const issuesRes = await axios.get(
-        "http://localhost:5000/api/issues"
+        "https://civichero-ai-backend.onrender.com/api/issues"
       );
 
       const aiRes = await axios.post(
-        "http://localhost:5000/api/ai/predict",
+        "https://civichero-ai-backend.onrender.com/api/ai/predict",
         {
           issues: issuesRes.data,
         }
