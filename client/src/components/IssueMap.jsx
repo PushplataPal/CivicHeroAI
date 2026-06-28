@@ -1,17 +1,51 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+} from "react-leaflet";
+
+function ChangeView({ center }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (center) {
+      map.flyTo(center, 15);
+    }
+  }, [center, map]);
+
+  return null;
+}
 
 function IssueMap() {
   const [issues, setIssues] = useState([]);
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   useEffect(() => {
     fetchIssues();
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCurrentLocation([
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }, []);
 
   const fetchIssues = async () => {
     try {
-      const res = await axios.get("https://civichero-ai-backend.onrender.com/api/issues");
+      const res = await axios.get(
+        "https://civichero-ai-backend.onrender.com/api/issues"
+      );
+
       setIssues(res.data);
     } catch (error) {
       console.log(error);
@@ -23,7 +57,7 @@ function IssueMap() {
       <h2>Community Issue Map 🗺️</h2>
 
       <MapContainer
-        center={[26.8467, 80.9462]}
+        center={currentLocation || [26.8467, 80.9462]}
         zoom={12}
         style={{
           height: "500px",
@@ -32,23 +66,40 @@ function IssueMap() {
         }}
       >
         <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
+          attribution="© OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
+        {currentLocation && (
+          <>
+            <ChangeView center={currentLocation} />
+
+            <Marker position={currentLocation}>
+              <Popup>
+                📍 Your Current Location
+              </Popup>
+            </Marker>
+          </>
+        )}
+
         {issues.map((issue) => {
-          // Check if location exists and contains comma
-          if (!issue.location || !issue.location.includes(",")) {
+          if (
+            !issue.location ||
+            !issue.location.includes(",")
+          ) {
             return null;
           }
 
-          const [lat, lng] = issue.location.split(",");
+          const [lat, lng] =
+            issue.location.split(",");
 
           const latitude = parseFloat(lat.trim());
           const longitude = parseFloat(lng.trim());
 
-          // Skip invalid coordinates
-          if (isNaN(latitude) || isNaN(longitude)) {
+          if (
+            isNaN(latitude) ||
+            isNaN(longitude)
+          ) {
             return null;
           }
 
@@ -71,7 +122,8 @@ function IssueMap() {
                 </p>
 
                 <p>
-                  <b>Upvotes:</b> {issue.upvotes || 0} 👍
+                  <b>Upvotes:</b>{" "}
+                  {issue.upvotes || 0} 👍
                 </p>
               </Popup>
             </Marker>
