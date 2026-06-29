@@ -2,7 +2,7 @@
 
 An AI-powered civic issue reporting platform that enables citizens to report, track, and verify community problems using Artificial Intelligence, geolocation, image uploads, and community participation.
 
-Developed as a solo hackathon project by **Pushplata Pal**.
+
 
 ---
 
