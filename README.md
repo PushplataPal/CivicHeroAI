@@ -185,7 +185,7 @@ https://github.com/PushplataPal/CivicHeroAI
 * Multilingual Support
 * Reward System for Active Citizens
 * Advanced Data Analytics
-
+---
 
 ## 📜 License
 
