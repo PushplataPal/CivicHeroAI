@@ -186,18 +186,6 @@ https://github.com/PushplataPal/CivicHeroAI
 * Reward System for Active Citizens
 * Advanced Data Analytics
 
----
-
-## 👩‍💻 Developer
-
-**Pushplata Pal**
-Solo Hackathon Participant
-
-GitHub: https://github.com/PushplataPal
-
-LinkedIn: Add your LinkedIn profile URL here.
-
----
 
 ## 📜 License
 
